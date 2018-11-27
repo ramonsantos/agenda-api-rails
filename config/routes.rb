@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :auths, only: [:create]
+  mount_devise_token_auth_for 'User', at: 'auth'
 
   resources :kinds
 

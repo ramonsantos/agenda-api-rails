@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::API
-  before_filter :ensure_json_request
+  include DeviseTokenAuth::Concerns::SetUserByToken
+
+  before_action :ensure_json_request
 
   def ensure_json_request
     return if request.headers['Accept'] =~ /vnd\.api\+json/
