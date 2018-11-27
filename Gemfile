@@ -16,6 +16,8 @@ gem 'puma', '~> 3.0'
 
 gem 'foreman'
 
+gem 'jwt'
+
 gem 'rack-cors'
 gem 'active_model_serializers', '~> 0.10.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
