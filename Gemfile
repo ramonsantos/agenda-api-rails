@@ -15,6 +15,7 @@ gem 'sqlite3'
 gem 'puma', '~> 3.0'
 
 gem 'foreman'
+gem 'versionist'
 
 gem 'devise_token_auth'
 gem 'devise-i18n'
