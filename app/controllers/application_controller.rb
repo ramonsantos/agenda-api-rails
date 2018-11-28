@@ -4,8 +4,13 @@ class ApplicationController < ActionController::API
   before_action :ensure_json_request
 
   def ensure_json_request
-    return if request.headers['Accept'] =~ /vnd\.api\+json/
-
-    render nothing: true, status: 406
+    unless request.headers['Accept'] =~ /vnd\.api\+json/
+      render nothing: true, status: :not_acceptable
+    else
+      unless request.get?
+        return if request.headers['Content-Type'] =~ /vnd\.api\+json/
+        render nothing: true, status: :unsupported_media_type
+      end
+    end
   end
 end

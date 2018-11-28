@@ -16,6 +16,7 @@ gem 'puma', '~> 3.0'
 
 gem 'foreman'
 gem 'versionist'
+gem 'kaminari'
 
 gem 'devise_token_auth'
 gem 'devise-i18n'
