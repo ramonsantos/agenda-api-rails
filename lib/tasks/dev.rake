@@ -3,7 +3,9 @@ namespace :dev do
 
   task setup: :environment do
     puts "Resetando o banco de dados..."
-    %x(rails db:drop db:create db:migrate)
+
+    # TODO
+    # %x(rails db:drop db:create db:migrate)
 
     puts "Cadastrando os tipos de contato..."
     kinds = %w(Amigo Comercial Conhecido)
