@@ -1,5 +1,5 @@
 class Contact < ApplicationRecord
-  #Validations
+  # Validations
   validates_presence_of :kind
   # TODO
   # validates_presence_of :address
