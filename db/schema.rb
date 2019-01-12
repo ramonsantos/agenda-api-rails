@@ -12,13 +12,16 @@
 
 ActiveRecord::Schema.define(version: 20181127192649) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "addresses", force: :cascade do |t|
     t.string   "street"
     t.string   "city"
     t.integer  "contact_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["contact_id"], name: "index_addresses_on_contact_id"
+    t.index ["contact_id"], name: "index_addresses_on_contact_id", using: :btree
   end
 
   create_table "contacts", force: :cascade do |t|
@@ -28,7 +31,7 @@ ActiveRecord::Schema.define(version: 20181127192649) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "kind_id"
-    t.index ["kind_id"], name: "index_contacts_on_kind_id"
+    t.index ["kind_id"], name: "index_contacts_on_kind_id", using: :btree
   end
 
   create_table "kinds", force: :cascade do |t|
@@ -42,7 +45,7 @@ ActiveRecord::Schema.define(version: 20181127192649) do
     t.integer  "contact_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["contact_id"], name: "index_phones_on_contact_id"
+    t.index ["contact_id"], name: "index_phones_on_contact_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -69,10 +72,13 @@ ActiveRecord::Schema.define(version: 20181127192649) do
     t.text     "tokens"
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
-    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+    t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true, using: :btree
   end
 
+  add_foreign_key "addresses", "contacts"
+  add_foreign_key "contacts", "kinds"
+  add_foreign_key "phones", "contacts"
 end
