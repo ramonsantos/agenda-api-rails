@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 describe V1::ContactsController, type: :controller do
+  before do
+    Kind.create!(description: 'Comercial')
+  end
+
   it 'request index and return NOT ACCEPTABLE' do
     get :index
     expect(response).to have_http_status(:not_acceptable)
@@ -13,6 +17,8 @@ describe V1::ContactsController, type: :controller do
   end
 
   it 'GET v1/contacts/:id' do
+    Contact.create(kind: Kind.first)
+
     contact = Contact.first
     request.accept = 'application/vnd.api+json'
     get :show, params: { id: contact.id }

@@ -9,6 +9,7 @@ class ApplicationController < ActionController::API
     else
       unless request.get?
         return if request.headers['Content-Type'] =~ /vnd\.api\+json/
+
         render body: nil, status: :unsupported_media_type
       end
     end
