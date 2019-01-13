@@ -1,5 +1,9 @@
 # README
 
+[![Build Status](https://travis-ci.org/ramonsantos/rails-ci.svg?branch=master)](https://travis-ci.org/ramonsantos/rails-ci)
+[![Maintainability](https://api.codeclimate.com/v1/badges/916907fd1854ff2e291f/maintainability)](https://codeclimate.com/github/ramonsantos/rails-ci/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/916907fd1854ff2e291f/test_coverage)](https://codeclimate.com/github/ramonsantos/rails-ci/test_coverage)
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
