@@ -3,9 +3,16 @@ language: ruby
 rvm:
   - 2.6
 
+notifications:
+  email:
+    recipients:
+      - ramonsantos.pe@gmail.com
+    on_success: always
+    on_failure: always
+
 before_install:
-    - gem update --system
-    - gem install bundler
+  - gem update --system
+  - gem install bundler
 cache: bundler
 
 branches:
@@ -24,3 +31,12 @@ before_script:
 
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+
+deploy:
+  provider: heroku
+  app: agenda-api-rails
+  api_key:
+    secure: "$HEROKU_KEY"
+  run:
+    - "bundle exec rake: db:migrate"
+    - restart
