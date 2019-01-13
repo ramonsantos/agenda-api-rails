@@ -38,5 +38,5 @@ deploy:
   api_key:
     secure: "$HEROKU_KEY"
   run:
-    - "bundle exec rake: db:migrate"
+    - "bundle exec rake db:migrate"
     - restart
