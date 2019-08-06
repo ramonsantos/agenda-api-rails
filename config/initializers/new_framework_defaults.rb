@@ -2,7 +2,10 @@
 #
 # This file contains migration options to ease your Rails 5.0 upgrade.
 #
+# Once upgraded flip defaults one by one to migrate to the new default.
+#
 # Read the Guide for Upgrading Ruby on Rails for more info on each option.
+Rails.application.config.action_controller.raise_on_unfiltered_parameters = true
 
 # Make Ruby 2.4 preserve the timezone of the receiver when calling `to_time`.
 # Previous versions had false.
@@ -12,7 +15,7 @@ ActiveSupport.to_time_preserves_timezone = true
 Rails.application.config.active_record.belongs_to_required_by_default = true
 
 # Do not halt callback chains when a callback returns false. Previous versions had true.
-ActiveSupport.halt_callback_chains_on_return_false = false
+ActiveSupport.halt_callback_chains_on_return_false = true
 
 # Configure SSL options to enable HSTS with subdomains. Previous versions had false.
 Rails.application.config.ssl_options = { hsts: { subdomains: true } }
