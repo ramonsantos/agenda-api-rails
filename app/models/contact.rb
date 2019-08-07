@@ -1,8 +1,8 @@
+# frozen_string_literal: true
+
 class Contact < ApplicationRecord
   # Validations
   validates_presence_of :kind
-  # TODO
-  # validates_presence_of :address
 
   belongs_to :kind
   has_many :phones
@@ -16,7 +16,7 @@ class Contact < ApplicationRecord
 
   def as_json(options = {})
     h = super(options)
-    h[:birthdate] = (I18n.l(self.birthdate) unless self.birthdate.blank?)
+    h[:birthdate] = (I18n.l(birthdate) unless birthdate.blank?)
     h
   end
 end

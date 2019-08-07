@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module V1
   class ContactsController < ApplicationController
     include ErrorSerializer
@@ -12,14 +14,12 @@ module V1
       @contacts = Contact.all.page(page_number).per(per_page)
 
       # Cache-Control --- expires_in 30.seconds, public: true
-      if stale?(etag: @contacts)
-        render json: @contacts
-      end
+      render json: @contacts if stale?(etag: @contacts)
     end
 
     # GET /contacts/1
     def show
-      render json: @contact#, include: [:kind, :address, :phones]
+      render json: @contact
     end
 
     # POST /contacts
