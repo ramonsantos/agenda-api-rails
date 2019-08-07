@@ -204,7 +204,7 @@ DEPENDENCIES
   rack-cors
   rails (~> 5.0.7.2)
   rails-erd
-  rails-i18n (~> 5.0.0)
+  rails-i18n (~> 5.0.4)
   rspec-rails (~> 3.5)
   simplecov
   spring
