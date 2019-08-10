@@ -2,7 +2,7 @@
 
 class Contact < ApplicationRecord
   # Validations
-  validates_presence_of :kind
+  validates_presence_of :kind, :name
 
   belongs_to :kind
   has_many :phones
